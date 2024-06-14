@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 47b949b7f4af85c4a9d94f868e107917
+guid: cf7097f255dd537439ce6a14c9350434
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LR-Body-MC_0
+      name: BodyUD-MC_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e970325123ab5e64a9492f8b9dc1c9d0
-      internalID: -584559873
+      spriteID: 9d7fe5de4c15d9c4c8dad6a0c5deb3c6
+      internalID: 1876975249
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LR-Body-MC_1
+      name: BodyUD-MC_1
       rect:
         serializedVersion: 2
         x: 96
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5053f6a3c6b0f304191017e30b08ca5b
-      internalID: 1091668040
+      spriteID: 41aa6dae43a047843871681393caadf6
+      internalID: 1304920814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LR-Body-MC_2
+      name: BodyUD-MC_2
       rect:
         serializedVersion: 2
         x: 192
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edc0db2f9fe566a4eb6844445cdb2151
-      internalID: 968756076
+      spriteID: bdbdd10523a49914181a582d16144a42
+      internalID: -1840646583
       vertices: []
       indices: 
       edges: []
@@ -170,9 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LR-Body-MC_0: -584559873
-      LR-Body-MC_1: 1091668040
-      LR-Body-MC_2: 968756076
+      BodyUD-MC_0: 1876975249
+      BodyUD-MC_1: 1304920814
+      BodyUD-MC_2: -1840646583
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
