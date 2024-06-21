@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 mousePos;//鼠标位置
     private Vector3 weaponPos;//武器位置
     private Vector3 respawnPosition;//重生位置
+    private SpriteRenderer weaponSR ;//武器贴图
 
     
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
         animatorBody = this.transform.Find("Body").GetComponent<Animator>();
         animatorHead = this.transform.Find("Head").GetComponent<Animator>();
+        weaponSR = this.transform.Find("Body").transform.Find("Weapon").GetComponent<SpriteRenderer>();
 
     }
 
@@ -65,6 +67,12 @@ public class PlayerController : MonoBehaviour
         {
             lookDirection.Set(playerMove.x, playerMove.y);
             lookDirection.Normalize();
+            //朝向是上方时，需要将武器改变渲染层数到头部和身体下方。
+            if(lookDirection.y >= 0.71){
+                weaponSR.sortingOrder = 0;
+            }else{
+                weaponSR.sortingOrder = 3;
+            }
         }
         else
         {
