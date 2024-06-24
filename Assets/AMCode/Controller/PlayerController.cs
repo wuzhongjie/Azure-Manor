@@ -17,8 +17,10 @@ public class PlayerController : MonoBehaviour
     public int Health { get { return currentHealth; } }
     private Animator animatorBody;
     private Animator animatorHead;
-    private Vector2 lookDirection;//朝向
+    private Vector2 lookDirection;//键盘朝向
+    private Vector2 mouseDirection;//键盘朝向
     public Vector2 LookDirection { get { return lookDirection; } }
+    public Vector2 MouseDirection { get { return mouseDirection; }}
     private Vector3 respawnPosition;//重生位置
 
 
@@ -62,22 +64,23 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //朝向设置
+        mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized;
         if (!Mathf.Approximately(playerMove.x, 0) || !Mathf.Approximately(playerMove.y, 0))
         {
             lookDirection.Set(playerMove.x, playerMove.y);
-            lookDirection.Normalize();
+            lookDirection.Normalize();            
         }
         else
         {
 
         }
         //身体动画设置
-        animatorBody.SetFloat("MoveX", lookDirection.x);
-        animatorBody.SetFloat("MoveY", lookDirection.y);
+        animatorBody.SetFloat("MoveX", mouseDirection.x);
+        animatorBody.SetFloat("MoveY", mouseDirection.y);
         animatorBody.SetFloat("Speed", playerMove.magnitude);
         //头部动画设置
-        animatorHead.SetFloat("MoveX", lookDirection.x);
-        animatorHead.SetFloat("MoveY", lookDirection.y);
+        animatorHead.SetFloat("MoveX", mouseDirection.x);
+        animatorHead.SetFloat("MoveY", mouseDirection.y);
         
     }
 
