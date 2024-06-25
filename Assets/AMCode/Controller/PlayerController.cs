@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Animator animatorBody;
     private Animator animatorHead;
     private Vector2 lookDirection;//键盘朝向
-    private Vector2 mouseDirection;//键盘朝向
+    private Vector2 mouseDirection;//鼠标朝向
     public Vector2 LookDirection { get { return lookDirection; } }
     public Vector2 MouseDirection { get { return mouseDirection; }}
     private Vector3 respawnPosition;//重生位置
@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour
 
 
     /* 待实现功能
-    1，武器跟随鼠标指针
-    2，左键攻击
-    3，右键防御
+    1，普通攻击剑气
+    2，右键防御
+    3，敌人
      */
 
 
@@ -63,17 +63,9 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        //朝向设置
-        mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized;
-        if (!Mathf.Approximately(playerMove.x, 0) || !Mathf.Approximately(playerMove.y, 0))
-        {
-            lookDirection.Set(playerMove.x, playerMove.y);
-            lookDirection.Normalize();            
-        }
-        else
-        {
-
-        }
+        //朝向设置（使用normalized可以对向量进行归一化，限制范围在1到-1）
+        //mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition).normalized;
+        mouseDirection = (Camera.main.ScreenToWorldPoint(Input.mousePosition)-transform.position).normalized;
         //身体动画设置
         animatorBody.SetFloat("MoveX", mouseDirection.x);
         animatorBody.SetFloat("MoveY", mouseDirection.y);
