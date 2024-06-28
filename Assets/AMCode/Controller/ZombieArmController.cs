@@ -31,7 +31,7 @@ public class ZombieArmController : MonoBehaviour
         angA2M = Mathf.Atan2(a2mDirection.y, a2mDirection.x) * Mathf.Rad2Deg;
 
         //朝向是上方时，需要将手臂改变渲染层数到头部和身体下方。
-        if (angA2M >= 45 && angA2M <= 135)
+        if (angA2M >= 30 && angA2M <= 150)
         {
             armSR.sortingOrder = 0;
         }
@@ -39,8 +39,10 @@ public class ZombieArmController : MonoBehaviour
         {
             armSR.sortingOrder = 3;
         }
-
-        transform.localEulerAngles = new Vector3(transform.position.x, transform.position.y, angA2M);
+        //创建一个四元数
+        Quaternion rotation = Quaternion.AngleAxis(angA2M, Vector3.forward);
+        //旋转，速度为float
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 45f * Time.deltaTime);
 
 
 

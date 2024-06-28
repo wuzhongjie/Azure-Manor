@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -28,7 +29,7 @@ public class WeaponController : MonoBehaviour
     //武器进行攻击
     private void weaponHit(Boolean isHitting)
     {
-        
+
         //没有正在播放的动画时播放动画
         if (!isHitting)
         {
@@ -41,7 +42,9 @@ public class WeaponController : MonoBehaviour
             {
                 animatorWeapon.SetTrigger("ClickHitF");
             }
-        }else{
+        }
+        else
+        {
             //正在播放时，存储下一次攻击
             HitNext = true;
         }
@@ -75,10 +78,11 @@ public class WeaponController : MonoBehaviour
         if (!isHitting)
         {
             //鼠标在右边时是0度，素材角度是135度。
-            transform.localEulerAngles = new Vector3(transform.position.x, transform.position.y, angW2M - 45);
-            //Quaternion rotation = Quaternion.AngleAxis(ang, Vector3.forward);
-            //this.transform.Find("Body").transform.Find("Weapon").rotation = Quaternion.Slerp(this.transform.Find("Body").transform.Find("Weapon").rotation, rotation,0.001f);
-            //this.transform.Find("Body").transform.Find("Weapon").rotation = Quaternion.LookRotation(direction,Vector3.up);
+            //创建一个四元数
+            Quaternion rotation = Quaternion.AngleAxis(angW2M - 45, Vector3.forward);
+            //旋转，速度为float
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation,45f * Time.deltaTime);
+
         }
 
         //武器动画设置
